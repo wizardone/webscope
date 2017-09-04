@@ -1,15 +1,15 @@
 <template>
-  <div class="hello">
+  <div class="user">
     <h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'user',
   data () {
     return {
-      msg: 'Fuck Off'
+      msg: 'User is here'
     }
   }
 }
@@ -35,3 +35,4 @@ a {
   color: #42b983;
 }
 </style>
+

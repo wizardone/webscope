@@ -1,15 +1,22 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="task">
+    <span>{{ name }}</span>
+    <span>{{ dueDate }}</span>
+    <span>{{ status }}</span>
+    <h1>{{ description }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'task',
+  props: ['user', 'document'],
   data () {
     return {
-      msg: 'Fuck Off'
+      name: 'Name of task',
+      description: 'Description of the task',
+      dueDate: 'Due date of the task',
+      status: 'Status of the task'
     }
   }
 }
@@ -35,3 +42,6 @@ a {
   color: #42b983;
 }
 </style>
+
+
+
