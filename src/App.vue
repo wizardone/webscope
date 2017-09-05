@@ -9,7 +9,6 @@
   import Document from './components/Document'
   import Task from './components/Task'
   import TaskList from './components/TaskList'
-  // import { mapState } from 'vuex'
 
   export default {
     name: 'app',
@@ -18,7 +17,12 @@
     },
     computed: {
       tasks () {
-        return this.$store.state.tasks
+        return this.$store.state.tasks.map((task) => {
+          return Object.assign(task, {
+            user: this.getUser(task.assigneeId),
+            document: this.getDocument(task.documentId)
+          })
+        })
       },
       documents () {
         return this.$store.state.documents
@@ -27,7 +31,13 @@
         return this.$store.state.users
       }
     },
-    beforeMount: function () {
+    methods: {
+      getUser (userId) {
+        return this.$store.getters.getUser(userId)
+      },
+      getDocument (documentId) {
+        return this.$store.getters.getDocument(documentId)
+      }
     },
     components: {
       User, Document, Task, TaskList

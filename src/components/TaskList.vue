@@ -8,7 +8,9 @@
         </div>
         <div class='meta'>
           <p>{{ task.description }}</p>
-          <p>Due Date: {{ task.dueDate }}</p>
+          <span>Due Date: {{ task.dueDate }}</span>
+          <span>Assignee: {{ task.user.name }}</span>
+          <span>Document: {{ task.document.name }}</span>
         </div>
       </div>
     </div>
@@ -37,5 +39,9 @@ a {
 }
 .header {
   font-weight: bold;
+}
+
+div span {
+  margin: 10px;
 }
 </style>
