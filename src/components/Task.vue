@@ -1,9 +1,18 @@
 <template>
   <div class="task">
-    <span>{{ name }}</span>
-    <span>{{ dueDate }}</span>
-    <span>{{ status }}</span>
-    <h1>{{ description }}</h1>
+    <div class='content'>
+      <div class='header'>
+        {{ task.name }}
+      </div>
+      <div class='meta'>
+        {{ task.description }}
+      </div>
+    </div>
+    <div class='extra content'>
+      <span class='right floated edit icon'>
+        <i class='edit icon'></i>
+      </span>
+    </div>
   </div>
 </template>
 
