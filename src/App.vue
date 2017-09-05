@@ -9,26 +9,25 @@
   import Document from './components/Document'
   import Task from './components/Task'
   import TaskList from './components/TaskList'
+  // import { mapState } from 'vuex'
 
   export default {
     name: 'app',
     data () {
-      return {
-        tasks: [],
-        documents: [],
-        users: []
+      return {}
+    },
+    computed: {
+      tasks () {
+        return this.$store.state.tasks
+      },
+      documents () {
+        return this.$store.state.documents
+      },
+      users () {
+        return this.$store.state.users
       }
     },
     beforeMount: function () {
-      this.loadJson()
-    },
-    methods: {
-      loadJson: function () {
-        let jsonData = require('../data.json')
-        this.tasks = jsonData.tasks
-        this.documents = jsonData.documents
-        this.users = jsonData.users
-      }
     },
     components: {
       User, Document, Task, TaskList

@@ -1,12 +1,14 @@
 <template>
   <div class="task-list">
+    <div v-show="tasks.length">Total tasks: {{tasks.length}}</div>
     <div class='ui centered card' v-for="task in tasks">
       <div class='content'>
         <div class='header'>
           {{ task.name }}
         </div>
         <div class='meta'>
-          {{ task.description }}
+          <p>{{ task.description }}</p>
+          <p>Due Date: {{ task.dueDate }}</p>
         </div>
       </div>
     </div>
@@ -32,5 +34,8 @@ h1, h2 {
 
 a {
   color: #42b983;
+}
+.header {
+  font-weight: bold;
 }
 </style>
