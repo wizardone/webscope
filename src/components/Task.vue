@@ -1,17 +1,17 @@
 <template>
   <div class="task">
     <div class='content'>
-      <div class='header'>
-        {{ task.name }}
+      <div class='content'>
+        <div class='header'>
+          <p>{{ task.name }}</p>
+        </div>
+        <div class='meta'>
+          <p>{{ task.description }}</p>
+          <span>Due Date: {{ task.dueDate }}</span>
+          <span>Assignee: {{ task.user.name }}</span>
+          <span>Document: {{ task.document.name }}</span>
+        </div>
       </div>
-      <div class='meta'>
-        {{ task.description }}
-      </div>
-    </div>
-    <div class='extra content'>
-      <span class='right floated edit icon'>
-        <i class='edit icon'></i>
-      </span>
     </div>
   </div>
 </template>
@@ -19,13 +19,9 @@
 <script>
 export default {
   name: 'task',
-  props: ['user', 'document'],
+  props: ['task'],
   data () {
     return {
-      name: 'Name of task',
-      description: 'Description of the task',
-      dueDate: 'Due date of the task',
-      status: 'Status of the task'
     }
   }
 }
@@ -49,6 +45,10 @@ li {
 
 a {
   color: #42b983;
+}
+
+.header p {
+font-weight: bold;
 }
 </style>
 

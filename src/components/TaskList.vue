@@ -1,25 +1,16 @@
 <template>
   <div class="task-list">
-    <div v-show="tasks.length">Total tasks: {{tasks.length}}</div>
-    <div class='ui centered card' v-for="task in tasks">
-      <div class='content'>
-        <div class='header'>
-          {{ task.name }}
-        </div>
-        <div class='meta'>
-          <p>{{ task.description }}</p>
-          <span>Due Date: {{ task.dueDate }}</span>
-          <span>Assignee: {{ task.user.name }}</span>
-          <span>Document: {{ task.document.name }}</span>
-        </div>
-      </div>
-    </div>
+    <div>Total tasks: {{tasks.length}}</div>
+    <task v-for="(task, index) in tasks" v-bind:task="task" :key="task.id"></task>
   </div>
 </template>
 
 <script>
+import Task from './Task'
+
 export default {
   name: 'task-list',
+  components: { Task },
   props: ['tasks'],
   data () {
     return {

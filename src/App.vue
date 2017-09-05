@@ -1,13 +1,13 @@
 <template>
   <div id='app'>
+    <div>Completed tasks: {{completedTasksCount}}</div>
+    <div>Upcoming tasks: {{upcomingTasksCount}}</div>
+    <div>Overdue tasks: {{overdueTasksCount}}</div>
     <task-list v-bind:tasks='tasks'></task-list>
   </div>
 </template>
 
 <script>
-  import User from './components/User'
-  import Document from './components/Document'
-  import Task from './components/Task'
   import TaskList from './components/TaskList'
 
   export default {
@@ -24,11 +24,14 @@
           })
         })
       },
-      documents () {
-        return this.$store.state.documents
+      completedTasksCount () {
+        return this.$store.state.completedTasksCount
       },
-      users () {
-        return this.$store.state.users
+      upcomingTasksCount () {
+        return this.$store.state.upcomingTasksCount
+      },
+      overdueTasksCount () {
+        return this.$store.state.overdueTasksCount
       }
     },
     methods: {
@@ -40,7 +43,7 @@
       }
     },
     components: {
-      User, Document, Task, TaskList
+      TaskList
     }
   }
 </script>
