@@ -23,7 +23,17 @@ const getters = {
   }}
 const actions = {}
 
-const mutations = {}
+const mutations = {
+  addTask (state, payload) {
+    state.tasks.push(payload.task)
+  },
+  updateUpcomingTasksCount (state) {
+    state.upcomingTasksCount++
+  },
+  updatecompletedTasksCount (state) {
+    state.completedTasksCount++
+  }
+}
 
 export default new Vuex.Store({
   state,
