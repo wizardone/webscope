@@ -25,7 +25,7 @@ const actions = {}
 
 const mutations = {
   addTask (state, payload) {
-    state.tasks.push(payload.task)
+    state.tasks.unshift(payload.task)
   },
   updateUpcomingTasksCount (state) {
     state.upcomingTasksCount++

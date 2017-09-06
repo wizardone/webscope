@@ -8,8 +8,8 @@
         <div class='meta'>
           <p>{{ task.description }}</p>
           <span>Due Date: {{ task.dueDate }}</span>
-          <span>Assignee: {{ task.user.name }}</span>
-          <span>Document: {{ task.document.name }}</span>
+          <!--<span>Assignee: {{ task.user.name }}</span>
+          <span>Document: {{ task.document.name }}</span>-->
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'task',
+  name: 'task-info',
   props: ['task'],
   data () {
     return {

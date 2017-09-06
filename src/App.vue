@@ -3,7 +3,7 @@
     <div>Completed tasks: {{completedTasksCount}}</div>
     <div>Upcoming tasks: {{upcomingTasksCount}}</div>
     <div>Overdue tasks: {{overdueTasksCount}}</div>
-    <task-list v-bind:tasks='tasks'></task-list>
+    <task-list :tasks='tasks'></task-list>
   </div>
 </template>
 

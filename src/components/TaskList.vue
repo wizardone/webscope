@@ -1,17 +1,19 @@
 <template>
   <div class="task-list">
     <task-form></task-form>
-    <task v-for="(task, index) in tasks" v-bind:task="task" :key="task.id"></task>
+    <div v-for="(task, index) in tasks">
+      <task-info :task="task"></task-info>
+    </div>
   </div>
 </template>
 
 <script>
-import Task from './Task'
+import TaskInfo from './TaskInfo'
 import TaskForm from './TaskForm'
 
 export default {
   name: 'task-list',
-  components: { Task, TaskForm },
+  components: { TaskInfo, TaskForm },
   props: ['tasks'],
   data () {
     return {

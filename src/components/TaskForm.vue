@@ -6,8 +6,8 @@
     <form class="new-task" v-bind:class="{ hidden: hideTaskForm }" v-on:submit="submitTask">
       <label>Title: <input type="text" v-model="task.name"/></label><br />
       <label>Description: <textarea v-model="task.description" rows="15" cols="20"></textarea></label><br />
-      <!--<label>Due Date: <input type="text" name="dueDate"/></label><br />
-      <label>Assignee: <input type="text" name="dueDate"/></label><br />
+      <label>Due Date: <input type="text" v-model="task.dueDate"/></label><br />
+      <!--<label>Assignee: <input type="text" name="dueDate"/></label><br />
       <label>Document: <input type="text" name="dueDate"/></label><br />-->
       <input type="submit" value="Add task"/>
     </form>
@@ -24,8 +24,11 @@ export default {
       task: {
         name: '',
         description: '',
+        dueDate: '',
         id: 13,
-        status: 0
+        status: 0,
+        user: '',
+        document: ''
       }
     }
   },
