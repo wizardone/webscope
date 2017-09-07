@@ -4,7 +4,6 @@
       <button v-on:click="toggleTaskForm">Add New Task</button>
     </div>
     <form class="new-task" v-bind:class="{ hidden: hideTaskForm }" v-on:submit="submitTask">
-      <!--<input type="hidden" v-model="task.id" v-bind:value="16"/>-->
       <label>Title: <input type="text" v-model="task.name"/></label><br />
       <label>Description: <textarea v-model="task.description" rows="15" cols="20"></textarea></label><br />
       <label>Due Date: <input type="text" v-model="task.dueDate"/></label><br />
