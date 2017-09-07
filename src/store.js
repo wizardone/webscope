@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-let jsonData = require('../data.json')
+const jsonData = require('../data.json')
 
 /*
  * Read the JSON file and set it up as state of the application in vuex
@@ -28,7 +28,7 @@ const getters = {
     return state.documents
   },
   getNextId: (state, getters) => {
-    let currentId = Math.max(...state.tasks.map((task) => task.id))
+    const currentId = Math.max(...state.tasks.map((task) => task.id))
     let nextId = currentId + 1
 
     return nextId
@@ -43,7 +43,7 @@ const mutations = {
   updateUpcomingTasksCount (state) {
     state.upcomingTasksCount++
   },
-  updatecompletedTasksCount (state) {
+  updateCompletedTasksCount (state) {
     state.completedTasksCount++
   }
 }
