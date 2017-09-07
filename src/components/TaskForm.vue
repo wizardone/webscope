@@ -4,11 +4,26 @@
       <button v-on:click="toggleTaskForm">Add New Task</button>
     </div>
     <form class="new-task" v-bind:class="{ hidden: hideTaskForm }" v-on:submit="submitTask">
+      <!--<input type="hidden" v-model="task.id" v-bind:value="16"/>-->
       <label>Title: <input type="text" v-model="task.name"/></label><br />
       <label>Description: <textarea v-model="task.description" rows="15" cols="20"></textarea></label><br />
       <label>Due Date: <input type="text" v-model="task.dueDate"/></label><br />
-      <!--<label>Assignee: <input type="text" name="dueDate"/></label><br />
-      <label>Document: <input type="text" name="dueDate"/></label><br />-->
+      <label>
+        Assignee:
+          <select name="assignee" v-model="task.assigneeId">
+            <option v-for="assignee in getUsers" v-bind:value="assignee.id">
+              {{ assignee.name }}
+            </option>
+          </select>
+      </label><br />
+      <label>
+        Document:
+        <select name="Document" v-model="task.documentId">
+          <option v-for="document in getDocuments" v-bind:value="document.id">
+            {{ document.name }}
+          </option>
+        </select>
+      </label><br />
       <input type="submit" value="Add task"/>
     </form>
   </div>
@@ -25,14 +40,25 @@ export default {
         name: '',
         description: '',
         dueDate: '',
-        id: 13,
+        id: '',
         status: 0,
-        user: '',
-        document: ''
+        assigneeId: '',
+        documentId: ''
       }
     }
   },
+  computed: {
+    getDocuments () {
+      return this.$store.getters.getDocuments
+    },
+    getUsers () {
+      return this.$store.getters.getUsers
+    }
+  },
   methods: {
+    getNextTaskId: function () {
+      return this.$store.getters.getNextId
+    },
     toggleTaskForm: function () {
       if (this.hideTaskForm === true) {
         this.hideTaskForm = false
@@ -43,7 +69,9 @@ export default {
     submitTask: function (e) {
       // OMG, there surely must be a more elegant approach to form handling, cause this is awful!!!
       e.preventDefault()
-      this.$store.commit({ type: 'addTask', task: this.task })
+      // Add the new id to the task, this was the only way that I got it working...
+      let newTask = Object.assign(this.task, { id: this.getNextTaskId() })
+      this.$store.commit({ type: 'addTask', task: newTask })
       this.$store.commit({ type: 'updateUpcomingTasksCount' })
     }
   }

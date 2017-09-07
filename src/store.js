@@ -18,9 +18,22 @@ const getters = {
   getUser: (state, getters) => (id) => {
     return state.users.find((user) => user.id === id)
   },
+  getUsers: (state, getters) => {
+    return state.users
+  },
   getDocument: (state, getters) => (id) => {
     return state.documents.find((document) => document.id === id)
-  }}
+  },
+  getDocuments: (state, getters) => {
+    return state.documents
+  },
+  getNextId: (state, getters) => {
+    let currentId = Math.max(...state.tasks.map((task) => task.id))
+    let nextId = currentId + 1
+
+    return nextId
+  }
+}
 const actions = {}
 
 const mutations = {
