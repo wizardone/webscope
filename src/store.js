@@ -40,11 +40,18 @@ const mutations = {
   addTask (state, payload) {
     state.tasks.unshift(payload.task)
   },
+  updateTaskStatus (state, payload) {
+    let task = state.tasks.find((task) => task.id === payload.id)
+    task.status = 1
+  },
   updateUpcomingTasksCount (state) {
     state.upcomingTasksCount++
   },
   updateCompletedTasksCount (state) {
     state.completedTasksCount++
+  },
+  decreaseUpcomingTasksCount (state) {
+    state.upcomingTasksCount--
   }
 }
 

@@ -29,6 +29,15 @@ describe('Store', () => {
       })
     })
 
+    describe('updateTaskStatus', () => {
+      it('changes the status of the task', () => {
+        const taskId = 1
+        store.commit({ type: 'updateTaskStatus', id: taskId })
+
+        expect(store.state.tasks.find((task) => task.id === taskId).id).to.equal(taskId)
+      })
+    })
+
     describe('updateUpcomingTasksCount', () => {
       it('updates the tasks count', () => {
         const currentCount = 7
@@ -48,6 +57,17 @@ describe('Store', () => {
         store.commit({ type: 'updateCompletedTasksCount' })
 
         expect(store.state.completedTasksCount).to.equal(currentCount + 1)
+      })
+    })
+
+    describe('decreaseUpcomingTasksCount', () => {
+      it('decreases the upcoming tasks count', () => {
+        const currentCount = 8
+        expect(store.state.upcomingTasksCount).to.equal(currentCount)
+
+        store.commit({ type: 'decreaseUpcomingTasksCount' })
+
+        expect(store.state.upcomingTasksCount).to.equal(currentCount - 1)
       })
     })
   })

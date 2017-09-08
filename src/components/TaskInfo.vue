@@ -10,6 +10,10 @@
           <span>Due Date: {{ task.dueDate }}</span>
           <span>Assignee: {{ task.user.name }}</span>
           <span>Document: {{ task.document.name }}</span>
+          <span>
+            <button v-if="task.status == 0" v-on:click="completeTask(task.id)">Mark as complete</button>
+            <span v-else><b>This task has been completed</b></span>
+          </span>
         </div>
       </div>
     </div>
@@ -22,6 +26,13 @@ export default {
   props: ['task'],
   data () {
     return {
+    }
+  },
+  methods: {
+    completeTask: function (id) {
+      this.$store.commit({ type: 'updateTaskStatus', id: id })
+      this.$store.commit({ type: 'updateCompletedTasksCount' })
+      this.$store.commit({ type: 'decreaseUpcomingTasksCount' })
     }
   }
 }
