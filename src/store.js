@@ -52,6 +52,9 @@ const mutations = {
   },
   decreaseUpcomingTasksCount (state) {
     state.upcomingTasksCount--
+  },
+  decreaseOverdueTasksCount (state) {
+    state.overdueTasksCount--
   }
 }
 

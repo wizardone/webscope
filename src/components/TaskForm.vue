@@ -4,7 +4,7 @@
       <button v-on:click="toggleTaskForm">Add New Task</button>
     </div>
     <form class="new-task" v-bind:class="{ hidden: hideTaskForm }" v-on:submit="submitTask">
-      <span class="errors" v-show="formErrors">Your form has errors, please fill in all the fields!</span>
+      <span class="errors" v-show="formErrors">Please fill in all the fields and check your date!</span>
       <label>Title: <input type="text" v-model="task.name" data-vv-name="title"/></label><br />
       <label>Description: <textarea v-model="task.description" rows="15" cols="20"></textarea></label><br />
       <label>Due Date: <input type="date" v-model="task.dueDate"/></label><br />
@@ -87,6 +87,9 @@ export default {
       let valid = true
       for (let attribute in task) {
         if (task[attribute] === '' || task[attribute] === undefined || task[attribute] === null) {
+          valid = false
+        }
+        if (attribute === 'dueDate' && (new Date(task[attribute]).getTime() < new Date().getTime())) {
           valid = false
         }
       }
