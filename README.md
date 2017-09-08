@@ -1,6 +1,6 @@
 # webscope
-
-> Webscope coding challenge
+The app was built using vuejs build in utilities, so should be pretty
+straightforward to start it, no additional configuration has beed added.
 
 ## Build Setup
 
@@ -19,9 +19,6 @@ npm run build --report
 
 # run unit tests
 npm run unit
-
-# run all tests
-npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

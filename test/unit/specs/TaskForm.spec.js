@@ -5,6 +5,7 @@ describe('TaskForm', () => {
   it('has an empty data object', () => {
     const taskFormData = {
       hideTaskForm: true,
+      formErrors: false,
       task: {
         name: '',
         description: '',

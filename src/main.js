@@ -5,15 +5,10 @@ import App from './App'
 import store from './store.js'
 
 Vue.config.productionTip = false
-const data = {
-  message: 'Main data message'
-}
 /* eslint-disable no-new */
-let el = new Vue({
+new Vue({
   el: '#app',
-  data: data,
   template: '<App/>',
   store,
   components: { App }
 })
-console.log(el.message === data.message)

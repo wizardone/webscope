@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
-    <div>Completed tasks: {{completedTasksCount}}</div>
-    <div>Upcoming tasks: {{upcomingTasksCount}}</div>
-    <div>Overdue tasks: {{overdueTasksCount}}</div>
+    <span>Completed tasks: <b>{{completedTasksCount}}</b></span> |
+    <span>Upcoming tasks: <b>{{upcomingTasksCount}}</b></span> |
+    <span>Overdue tasks: <b>{{overdueTasksCount}}</b></span>
     <task-list :tasks='tasks'></task-list>
   </div>
 </template>
@@ -56,6 +56,7 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background: #86a9e0;
 }
 </style>
 
