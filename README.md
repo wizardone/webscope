@@ -2,6 +2,14 @@
 The app was built using vuejs build in utilities, so should be pretty
 straightforward to start it, no additional configuration has beed added.
 
+# Assumptions
+Based on the data provided I make the following assumptions:
+1. task with `status == 0` is still upcoming
+2. task with `status == 1` is completed
+3. I could not find any corelation between the dueDate attribute and the
+   statuses, so I consider an overdue task every task which has a
+dueDate > the current date
+4.
 ## Build Setup
 
 ``` bash

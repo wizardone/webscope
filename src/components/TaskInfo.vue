@@ -30,9 +30,7 @@ export default {
   },
   methods: {
     completeTask: function (id) {
-      this.$store.commit({ type: 'updateTaskStatus', id: id })
-      this.$store.commit({ type: 'updateCompletedTasksCount' })
-      this.$store.commit({ type: 'decreaseUpcomingTasksCount' })
+      this.$store.dispatch({ type: 'completeTak', id: id })
     }
   }
 }

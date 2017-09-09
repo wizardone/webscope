@@ -75,8 +75,7 @@ export default {
       // Add the new id to the task, this was the only way that I got it working...
       let newTask = Object.assign(this.task, { id: this.getNextTaskId() })
       if (this.taskValid(newTask)) {
-        this.$store.commit({ type: 'addTask', task: newTask })
-        this.$store.commit({ type: 'updateUpcomingTasksCount' })
+        this.$store.dispatch({ type: 'addTask', task: newTask })
         this.formErrors = false
         this.toggleTaskForm()
       } else {

@@ -34,7 +34,17 @@ const getters = {
     return nextId
   }
 }
-const actions = {}
+const actions = {
+  addTask (context, payload) {
+    context.commit({ type: 'addTask', task: payload.task })
+    context.commit({ type: 'updateUpcomingTasksCount' })
+  },
+  completeTak (context, payload) {
+    context.commit({ type: 'updateTaskStatus', id: payload.id })
+    context.commit({ type: 'updateCompletedTasksCount' })
+    context.commit({ type: 'decreaseUpcomingTasksCount' })
+  }
+}
 
 const mutations = {
   addTask (state, payload) {
