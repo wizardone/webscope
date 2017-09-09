@@ -39,8 +39,8 @@ describe('Store', () => {
     })
 
     describe('updateUpcomingTasksCount', () => {
-      it('updates the tasks count', () => {
-        const currentCount = 7
+      it('updates the upcoming tasks count', () => {
+        const currentCount = 4
         expect(store.state.upcomingTasksCount).to.equal(currentCount)
 
         store.commit({ type: 'updateUpcomingTasksCount' })
@@ -50,7 +50,7 @@ describe('Store', () => {
     })
 
     describe('updateCompletedTasksCount', () => {
-      it('updates the tasks count', () => {
+      it('updates the completed tasks count', () => {
         const currentCount = 5
         expect(store.state.completedTasksCount).to.equal(currentCount)
 
@@ -62,7 +62,7 @@ describe('Store', () => {
 
     describe('decreaseUpcomingTasksCount', () => {
       it('decreases the upcoming tasks count', () => {
-        const currentCount = 8
+        const currentCount = 5
         expect(store.state.upcomingTasksCount).to.equal(currentCount)
 
         store.commit({ type: 'decreaseUpcomingTasksCount' })

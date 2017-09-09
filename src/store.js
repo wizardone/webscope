@@ -2,16 +2,25 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+// Read the provided json file
 const jsonData = require('../data.json')
+// Completed tasks are the ones with status 1
+let completedTasks = jsonData.tasks.filter((task) => task.status === 1)
+// Overdue tasks are the ones that are not completed and
+// with current date bigger than the due date
+let overdueTasks = jsonData.tasks.filter((task) => (task.status === 0 && new Date().getTime() > new Date(task.dueDate).getTime()))
+// Upcoming tasks are the ones with status 0 that
+// have not yet reached the due date
+let upcomingTasks = jsonData.tasks.filter((task) => (task.status === 0 && new Date().getTime() < new Date(task.dueDate).getTime()))
 
 /*
  * Read the JSON file and set it up as state of the application in vuex
  * Merge any additional computed properties in the state as well
  */
 const state = Object.assign(jsonData, {
-  completedTasksCount: jsonData.tasks.filter((task) => task.status === 1).length,
-  upcomingTasksCount: jsonData.tasks.filter((task) => task.status === 0).length,
-  overdueTasksCount: jsonData.tasks.filter((task) => new Date(task.dueDate).getTime() > new Date().getTime()).length
+  completedTasksCount: completedTasks.length,
+  upcomingTasksCount: upcomingTasks.length,
+  overdueTasksCount: overdueTasks.length
 })
 
 const getters = {
@@ -40,9 +49,13 @@ const actions = {
     context.commit({ type: 'updateUpcomingTasksCount' })
   },
   completeTak (context, payload) {
-    context.commit({ type: 'updateTaskStatus', id: payload.id })
+    context.commit({ type: 'updateTaskStatus', id: payload.task.id })
     context.commit({ type: 'updateCompletedTasksCount' })
-    context.commit({ type: 'decreaseUpcomingTasksCount' })
+    if (new Date(payload.task.dueDate).getTime() < new Date().getTime()) {
+      context.commit({ type: 'decreaseOverdueTasksCount' })
+    } else {
+      context.commit({ type: 'decreaseUpcomingTasksCount' })
+    }
   }
 }
 

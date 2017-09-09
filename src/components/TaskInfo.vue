@@ -11,7 +11,7 @@
           <span>Assignee: {{ task.user.name }}</span>
           <span>Document: {{ task.document.name }}</span>
           <span>
-            <button v-if="task.status == 0" v-on:click="completeTask(task.id)">Mark as complete</button>
+            <button v-if="task.status == 0" v-on:click="completeTask">Mark as complete</button>
             <span v-else><b>This task has been completed</b></span>
           </span>
         </div>
@@ -29,8 +29,8 @@ export default {
     }
   },
   methods: {
-    completeTask: function (id) {
-      this.$store.dispatch({ type: 'completeTak', id: id })
+    completeTask: function () {
+      this.$store.dispatch({ type: 'completeTak', task: this.task })
     }
   }
 }
